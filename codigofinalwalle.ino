@@ -9,9 +9,10 @@ Servo myservo;                   // Declara o controle do servo
 #define in3 6
 #define in4 7
 #define enB 9
+#define inclinacaoPin 13 //sensor de inclinação
 #define MIN_DISTANCIA 15 // Distância mínima em centímetros para parar
-#define echopin 11     // Echo pin do sensor ultrassônico
-#define trigpin 12     // Trigger pin do sensor ultrassônico
+#define echopin A0     // Echo pin do sensor ultrassônico
+#define trigpin A1    // Trigger pin do sensor ultrassônico
 
 int xAxis=140, yAxis=140;
 
@@ -29,6 +30,7 @@ pinMode(in1, OUTPUT);
 pinMode(in2, OUTPUT);
 pinMode(in3, OUTPUT);
 pinMode(in4, OUTPUT);
+pinMode(inclinacaoPin, INPUT);
 Serial.begin(9600);
 BT.begin(9600); // comunicação sereal
 delay(500);
@@ -68,6 +70,16 @@ void loop() {
    Serial.println(yAxis);
   }
   delay(10);
+   // sensor de inclinação
+  int estadoInclinacao = digitalRead(inclinacaoPin);
+
+  if (estadoInclinacao == HIGH) {
+    Serial.println("Sensor na posição estável");
+  } else {
+    Serial.println("Sensor inclinado");
+  }
+
+  delay(500);
   
   // valores corretos
 
