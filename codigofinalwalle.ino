@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h>
+p#include <SoftwareSerial.h>
 #include <Servo.h>                      // Controle do servo
 
 SoftwareSerial BT(2, 3); // RX, TX
